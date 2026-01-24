@@ -1,0 +1,268 @@
+Project Title: PhishGuard – AI-Based Phishing Website Detection System
+Intern: Thanniru Vaishnavi
+Program: Infosys Springboard Virtual Internship 6.0 (8 weeks)
+Duration: 27 November 2025 – 21 January 2026
+2. Project Objective
+The main objective of this project was to design and implement an AI-driven phishing website
+detection system. PhishGuard aims to analyze any given URL in real time and classify it as “Safe”
+or “Malicious”. Given that phishing is one of the most common and dangerous cybersecurity
+threats, the system is intended to help users make safer browsing decisions by automatically
+identifying deceptive or harmful sites.
+3. Project description (Detailed)
+PhishGuard is a machine learning–powered web application developed to detect phishing
+websites by analyzing various URL-based features. The project was executed in multiple phases,
+from initial problem understanding through final deployment. Initially, a dataset containing both
+legitimate and malicious URLs was collected and studied. Data preprocessing was applied – for
+example, removing duplicate entries, handling missing or malformed values, and normalizing
+URL strings – to improve data quality.
+Next, feature extraction converted each URL into a set of numerical features. Common URLbased features were extracted, such as the total URL length, hostname length, number of dots,
+and other structural attributes. For example, very long URLs or those containing an IP address
+instead of a domain name are often indicative of phishing. The features also included the
+presence of HTTPS, the count of suspicious keywords (e.g. “login”, “verify”), and the domain age
+(newly-registered domains are often used by attackers).
+After feature engineering, multiple machine learning models were trained and evaluated.
+Classifiers such as Logistic Regression, Decision Trees, Random Forest, and XGBoost were
+compared using metrics like accuracy, precision, and recall. In our experiments, XGBoost
+consistently provided the best classification performance and handled feature interactions
+robustly, so it was selected as the final model. The trained model was serialized (saved) for
+deployment in the next phase.
+The trained model was integrated into a Flask-based REST API. This API accepts a usersubmitted URL, applies the same feature extraction steps in real time, and uses the model to
+predict whether the URL is safe or malicious. The prediction result (along with a confidence
+score) is returned to the client in JSON format. Finally, a responsive web front end was
+developed to allow users to enter URLs and view the results. The interface supports user login
+and maintains a history of scanned URLs for each user, making the application more practical
+and user-friendly.
+
+4. Timeline Overview
+The internship began with an orientation and project setup phase from 27 November 2025 to 30
+November 2025, which included the kick-off call, technology overview, and task allocation. The
+actual project execution was carried out over eight weeks from 1 December 2025 to 21 January
+2026, following the milestone structure defined by Infosys Springboard.
+A summary of planned and completed activities is presented below:
+Week 1 (1–7 December 2025) – Milestone 1:
+Planned: Dataset research and problem understanding.
+Completed: Dataset analysis, identification of trusted data sources, and project planning.
+Week 2 (8–14 December 2025) – Milestone 1:
+Planned: Data collection, cleaning, and preprocessing.
+Completed: URL normalization, removal of duplicate and invalid URLs, and feature preparation.
+Week 3 (15–21 December 2025) – Milestone 2:
+Planned: Feature extraction and model training.
+Completed: Feature engineering and training of multiple machine learning models.
+Week 4 (22–28 December 2025) – Milestone 2:
+Planned: Model evaluation and optimization.
+Completed: Model comparison, hyperparameter tuning, and final selection of the XGBoost
+classifier.
+Week 5 (29 December 2025 – 4 January 2026) – Milestone 3:
+Planned: Backend API and frontend UI development.
+Completed: Development of Flask-based ML API and initial React-based user interface.
+Week 6 (5–11 January 2026) – Milestone 3:
+Planned: UI enhancement and integration.
+Completed: Frontend–backend integration, authentication implementation, and UI testing.
+
+Week 7 (12–18 January 2026) – Milestone 4:
+Planned: Documentation and presentation preparation.
+Completed: Preparation of project report, screenshots, and presentation slides.
+Week 8 (19–21 January 2026) – Milestone 4:
+Planned: Final review and submission.
+Completed: Final documentation submission, presentation, and project closure.
+5a. Key Milestones
+Milestone 1 (1 December – 10 December 2025):
+Dataset research, data collection, cleaning, preprocessing, and feature extraction.
+Milestone 2 (11 December – 23 December 2025):
+Machine learning model selection, training, evaluation, hyperparameter tuning, and final
+model selection.
+Milestone 3 (24 December 2025 – 9 January 2026):
+Frontend UI development, backend API integration, authentication, and system testing.
+Milestone 4 (10 January – 21 January 2026):
+Project documentation, presentation preparation, final submission, and evaluation.
+The project was executed using a structured, phase-by-phase approach. The initial phase
+focused on understanding phishing attack patterns and studying how malicious URLs differ from
+legitimate ones. Based on this analysis, relevant datasets containing phishing and legitimate
+URLs were collected from trusted sources.
+During the data preprocessing phase, the raw URL dataset was cleaned by removing duplicate
+entries, invalid or corrupted URLs, and missing values. URL formats were normalized to ensure
+consistency across the dataset, which helped improve the reliability of feature extraction and
+model training.
+Feature engineering played a crucial role in the system’s performance. Each URL was parsed to
+extract meaningful features such as URL length, number of dots, presence of an IP address,
+usage of HTTPS, suspicious keywords, and domain age. For example, URLs containing IP
+addresses or newly registered domains are commonly associated with phishing attacks. These
+extracted attributes were combined into numerical feature vectors suitable for machine learning
+models.
+After feature extraction, the dataset was split into training and testing sets using a 70:30 ratio.
+Multiple machine learning classifiers were trained on the training data and evaluated using the
+testing data. Based on performance metrics such as accuracy and consistency, XGBoost
+emerged as the best-performing classifier. The final trained model was serialized and deployed
+using a Flask-based REST API, which accepts URLs as input, performs feature extraction, and
+returns prediction results in JSON format.
+On the frontend, a web-based user interface was developed using React (HTML, CSS, and
+JavaScript). The interface allows users to enter a URL and submit it for analysis. The request is
+first sent to a Node.js and Express-based backend server, which acts as an intermediary layer
+between the frontend and the machine learning model.
+The Node/Express backend forwards the submitted URL to the Flask-based machine learning
+API for prediction. After receiving the classification result, the backend sends the response back
+to the frontend. The user interface then displays the result (e.g., “Malicious URL Detected”), along
+with a confidence score and a simple risk indicator for better user understanding.
+User authentication was implemented to allow users to securely log in and access their personal
+scan history. All system components were thoroughly tested, including frontend form submission,
+backend request handling, and communication with the Flask API. This ensured smooth and
+reliable interaction between the React frontend, Node/Express backend, and Flask-based
+machine learning service..
+Virtual Internship 6.0
+pg. 6
+6. Machine Learning Workflow
+The ML workflow for PhishGuard followed these steps:
+1. Data Collection and Exploration: Gather a labeled dataset of legitimate and
+phishing URLs and perform initial analysis.
+2. Data Cleaning and Preprocessing: Clean the data by removing duplicates,
+correcting formats, and normalizing text.
+3. Feature Extraction: Compute features for each URL (length, number of special
+characters, domain properties, etc.).
+4. Train-Test Split: Divide the dataset ( 70% training, 30% testing) to evaluate
+model performance on unseen data.
+5. Model Training: Train multiple classifiers (Logistic Regression, Random Forest,
+XGBoost) on the training data, tuning hyperparameters via grid search.
+6. Model Evaluation: Measure each model’s accuracy, precision, recall, and F1-
+score on the test set.
+7. Model Selection: Choose XGBoost for deployment, as it yielded the highest
+accuracy and robustness.
+8. Model Deployment: Serialize the chosen model and load it in the Flask API for
+real-time predictions.
+7. Feature Extraction
+The following URL-based features were engineered:
+• URL Length: Total number of characters in the URL. Extremely long URLs can
+indicate obfuscation by attackers.
+• Hostname Length: Number of characters in the domain/hostname part.
+Unusually long hostnames may be suspicious.
+• Number of Dots: Count of . characters in the URL. A high number can indicate
+many subdomains or IP usage.
+• Presence of HTTPS: Boolean indicating if the URL uses https://. Legitimate sites
+typically use HTTPS.
+• Presence of IP Address: Boolean indicating if the URL uses an IP address
+instead of a domain name (often seen in phishing links).
+Suspicious Keywords: Count of known phishing-related keywords in the URL
+(e.g. “login”, “secure”, “bank”). Phishing URLs often include such terms to appear
+credible.
+• Domain Age: Age of the domain in days (from WHOIS data). Newly-registered
+domains are commonly used in phishing.
+These features are well-known heuristics in phishing detection. Each URL in the dataset
+was converted into a feature vector using this set.
+8. Model Training and Evaluation
+Several classifiers were trained on the extracted features, including Logistic Regression,
+Decision Tree, Random Forest, and XGBoost. Each model’s predictions were evaluated
+on the test set using accuracy, precision, recall, and F1-score. Cross-validation was
+used to tune hyperparameters (e.g. adjusting tree depth and learning rate).
+XGBoost stood out with the best performance, consistent with published results. Its
+ability to combine many weak learners into a strong classifier made it well-suited to our
+feature set.
+The final XGBoost model was serialized (for example, saved with joblib) so that it could
+be loaded by the backend service. This trained model now powers the real-time
+predictions. During evaluation, confusion matrices confirmed that both phishing and
+benign URLs were identified correctly, with a low false positive and false negative rate.
+9. Backend API Development
+The backend was implemented as a RESTful API using Flask. Key components include:
+• Prediction Endpoint: An endpoint ( /predict) that accepts a URL in an HTTP
+request. When called, the server:
+1. Extracts features from the URL using the same preprocessing logic.
+2. Loads the trained XGBoost model and performs a prediction.
+3. Returns the result and confidence score in JSON format (e.g.
+{"prediction": "Malicious", "confidence": 0.92}).
+• User Management: Endpoints for user signup, login, and logout. Secure
+password hashing and session handling protect user accounts.
+
+• Scan History: Endpoints to save and retrieve each user’s scan history in a
+database. This allows the frontend to display past results to the user.
+Input validation and error handling were implemented to ensure robustness (e.g.
+verifying valid URL format). The Flask API was tested (using tools like Postman) to
+confirm that requests are processed correctly and responses are returned as expected.
+
+10. Frontend Development
+A responsive and user-friendly web interface was developed to enable users to
+interact with the PhishGuard system. The frontend was implemented using React, along
+with HTML, CSS, and JavaScript, to ensure a dynamic and interactive user experience
+across different devices.
+The main functionalities of the frontend include:
+• URL Submission:
+The interface provides a text input field and submit button that allow users to
+enter a website URL for analysis. Client-side input validation is performed to
+ensure the correctness of the URL format before submission.
+• Result Display:
+After the URL is analyzed, the frontend displays the classification result, clearly
+indicating whether the website is “Safe” or “Malicious.” The prediction is
+accompanied by a confidence score and a simple visual risk indicator to improve
+user understanding.
+• User Authentication:
+Dedicated pages for user registration and login were implemented. Secure
+session management ensures that only authenticated users can access
+protected features such as scan history.
+• Scan History Dashboard:
+Logged-in users can access a personalized dashboard displaying previously
+scanned URLs along with their corresponding prediction results. This information
+is securely fetched from the backend server.
+The user interface design emphasizes clarity, simplicity, and usability.
+Asynchronous API communication was implemented using Axios, allowing the
+frontend to interact efficiently with the Node.js/Express backend and the Flask-based
+machine learning API without requiring full page reloads. After development, the
+frontend was integrated and tested with the backend services to ensure seamless data
+flow and a smooth overall user experience. 
+11. Challenges Faced
+During the development of the PhishGuard system, several technical and
+implementation challenges were encountered, particularly due to the integration of a
+MERN stack application with a machine learning service.
+• Feature Engineering:
+Identifying the most relevant URL-based features for phishing detection required
+extensive research and experimentation. Selecting effective suspicious keywords
+and determining meaningful attributes such as domain age and URL structure
+involved multiple iterations and validation steps.
+• Machine Learning Model Integration:
+Integrating the trained machine learning model with the web application was
+challenging. Ensuring consistency between the feature extraction process used
+during training and the real-time prediction pipeline in the Flask API required
+careful serialization and testing.
+• MERN Stack and ML Service Communication:
+Establishing reliable communication between the React frontend, Node.js and
+Express backend, and the Flask-based machine learning API was a key
+challenge. Proper request handling, response formatting, and error management
+were implemented to ensure smooth data flow across services.
+• Deployment and Performance Issues:
+Deploying the Flask ML API alongside the Node/Express backend required
+managing dependencies, server configurations, and performance optimization.
+Handling concurrent requests and maintaining low response latency for real-time
+predictions was also a challenge.
+• Authentication and Database Management:
+Implementing secure user authentication and managing persistent scan history
+using MongoDB added complexity. Ensuring secure password storage through
+hashing and maintaining data integrity across user sessions required careful
+backend design.
+These challenges were addressed through systematic testing, debugging, and
+iterative development. Unit testing was used to verify individual components such as
+feature extraction and model inference, while integration testing ensured smooth end-toend functionality across the MERN stack and machine learning service.
+
+12. Learnings and Skills Acquired
+This internship provided valuable hands-on experience. Key learnings include:
+• Machine Learning Model Development: Gained practical skills in data
+preparation, algorithm selection, model training, and evaluation.
+• Feature Engineering from Real Data: Learned how to extract and validate
+meaningful features from raw URL data.
+• REST API Creation with Flask: Learned how to build and secure API endpoints
+that connect a machine learning model to a web client.
+• Full-Stack Integration: Understood how frontend and backend components
+work together to form a complete application.
+• Deployment and Debugging: Acquired experience in deploying a Python web
+service and troubleshooting runtime issues to ensure reliability.
+Overall, this project strengthened both technical and analytical skills by applying
+theoretical concepts to a real-world cybersecurity problem.
+13. Conclusion
+The PhishGuard project successfully demonstrates an AI-based approach to detecting
+phishing websites in real time. By applying machine learning techniques, the system can
+automatically analyze URL characteristics and alert users to potential risks. Through this
+internship, I gained practical experience in every stage of development — from data
+collection and model training to deploying a full-stack application. The project not only
+achieved its objective of creating a working phishing detection tool, but also provided an
+excellent learning experience. It strengthened my understanding of cybersecurity, data
+science, and software development.
+14. Acknowledgements
+I sincerely thank Infosys Springboard and my project mentors for their guidance and
+support throughout this internship. The Springboard program provided a great platform
+to apply AI concepts to a real-world cybersecurity problem, and I appreciate the
+opportunity and feedback received during this journey.
